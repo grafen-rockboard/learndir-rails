@@ -3,6 +3,10 @@ class BooksController < ApplicationController
     @books = Book.all
   end
 
+  def trial
+    puts '----------- trial --------------'
+  end
+  
   def new
     @book = Book.new
   end
