@@ -2,7 +2,11 @@
 
 <ul>
 <% @books.each do |book| %>
-  <li><%= book.name %><br><%= book.description %><br><%= link_to 'edit', edit_book_path(book)  %></li>
+  <li><%= book.name %><br>
+    <%= book.description %><br>
+    <%= book.price %><br>
+    <%= link_to 'edit', edit_book_path(book)  %>
+  </li>
 <% end %>
 
 <%= link_to 'new', new_book_path() %>
