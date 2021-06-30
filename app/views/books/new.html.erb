@@ -1,14 +1,3 @@
 <p>New</p>
 
-<%= form_with model: @book do |book| %>
-  <%= book.label :name %>
-  <%= book.text_field :name %>
-  <br>
-  <%= book.label :description %>
-  <%= book.text_area :description %>
-  <br>
-  <%= book.label :price %>
-  <%= book.text_field :price %>
-  <br>
-  <%= book.submit %>
-<% end %>
+<%= render 'form', book_model: @book %>
