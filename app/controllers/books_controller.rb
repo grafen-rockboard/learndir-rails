@@ -1,5 +1,7 @@
 # coding: utf-8
 class BooksController < ApplicationController
+  before_action :find_book, only: [:update, :destroy, :show, :edit]
+  
   def index
     @books = Book.all
   end
@@ -36,17 +38,17 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = Book.find(params[:id])
   end
   
   def edit
-    @book = Book.find(params[:id])
   end
   
   def update
-    @book = Book.find(params[:id])
-    @book.update(book_params)
-    redirect_to root_path
+    if @book.update!(book_params)
+      redirect_to @book
+    else
+      :edit
+    end
   end
 
   def destroy
@@ -55,6 +57,11 @@ class BooksController < ApplicationController
   end
 
   private
+
+  def find_book
+    @book = Book.find(params[:id])
+  end
+  
   def book_params
     params.require(:book).permit(:name, :description, :price, :email)
   end
