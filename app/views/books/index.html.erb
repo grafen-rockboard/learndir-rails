@@ -5,6 +5,13 @@
   <li><%= book.name %><br>
     <%= book.description %><br>
     <%= book.price %><br>
+    <% if book.users.any? %>
+      Rentaled!
+      <% book.users.each do |user| %>
+        <%= user.name %>
+      <% end %>
+    <% end %>
+    <br>
     <%= link_to 'edit', edit_book_path(book)  %>
   </li>
 <% end %>
