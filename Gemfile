@@ -27,7 +27,15 @@ gem 'jbuilder', '~> 2.7'
 
 
 # SHA hash support
-gem 'digest'
+# gem 'digest'
+
+
+# session handling
+gem 'activerecord-session_store'
+
+# handling XML
+gem 'activemodel-serializers-xml'
+
 
 
 # Reduces boot times through caching; required in config/boot.rb
