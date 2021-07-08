@@ -1,11 +1,8 @@
 # coding: utf-8
 class BooksController < ApplicationController
-<<<<<<< HEAD
 
   around_action :write_test, only: [:show]
-=======
   before_action :find_book, only: [:update, :destroy, :show, :edit]
->>>>>>> 899a61f203091ff4aacf85fcef351765eb555db0
   
   def index
     @books = Book.all
@@ -46,7 +43,6 @@ class BooksController < ApplicationController
   end
 
   def show
-<<<<<<< HEAD
     @book = Book.find(params[:id])
 
     respond_to do |format|
@@ -54,26 +50,17 @@ class BooksController < ApplicationController
       format.xml { render xml: @book }
       format.json { render json: @book }
     end
-=======
->>>>>>> 899a61f203091ff4aacf85fcef351765eb555db0
   end
   
   def edit
   end
   
   def update
-<<<<<<< HEAD
     @book = Book.find(params[:id])
     if @book.update(book_params)
       redirect_to root_path
     else
       render :edit
-=======
-    if @book.update!(book_params)
-      redirect_to @book
-    else
-      :edit
->>>>>>> 899a61f203091ff4aacf85fcef351765eb555db0
     end
   end
 
