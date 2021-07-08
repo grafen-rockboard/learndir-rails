@@ -1,0 +1,21 @@
+<%= form_with model: book_model do |book| %>
+  <div>
+    <%= book.label :name %>
+    <%= book.text_field :name %>
+  </div>
+  <div>
+    <%= book.label :description %>
+    <%= book.text_area :description %>
+  </div>
+  <div>
+    <%= book.label :price %>
+    <%= book.text_field :price %>
+  </div>
+  <div>
+    <%= book.label :email %>
+    <%= book.text_field :email %>
+  </div>
+  <div>
+    <%= book.submit 'update' %>
+  </div>
+<% end %>

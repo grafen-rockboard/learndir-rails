@@ -10,13 +10,18 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2021_07_05_135815) do
+=======
+ActiveRecord::Schema.define(version: 2021_06_30_025344) do
+>>>>>>> 899a61f203091ff4aacf85fcef351765eb555db0
 
   create_table "books", force: :cascade do |t|
     t.string "name"
     t.text "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "email"
     t.integer "price"
   end
 
