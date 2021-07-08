@@ -1,10 +1,39 @@
 <p>books</p>
 
 <ul>
+<<<<<<< HEAD
+<%
+=begin
+%>
+  
+  <% @books.each do |book| %>
+    <li><%= book.name %><br>
+      <%= book.description %><br>
+      <%= book.price %><br>
+      <% if book.users.any? %>
+        Rentaled!
+        <% book.users.each do |user| %>
+          <%= user.name %>
+        <% end %>
+      <% end %>
+      <br>
+      <%= link_to 'edit', edit_book_path(book)  %>
+    </li>
+  <% end %>
+
+<%
+=end
+%>
+
+  <%= render partial: 'book_name_partial', collection: @books, as: :book %>
+
+
+=======
   <% @books.each do |book| %>
     <li><%= book.name %><br><%= book.description %><br><%= book.price %><br><%= book.email %><br><%= link_to 'edit', edit_book_path(book)  %></li>
   <% end %>
 
+>>>>>>> 899a61f203091ff4aacf85fcef351765eb555db0
   <%= link_to 'new', new_book_path() %>
 </ul>
 

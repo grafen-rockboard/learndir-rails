@@ -21,6 +21,25 @@ ActiveRecord::Schema.define(version: 2021_07_03_012651) do
     t.integer "price"
   end
 
+  create_table "rentals", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "book_id", null: false
+    t.date "rental_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_rentals_on_book_id"
+    t.index ["user_id"], name: "index_rentals_on_user_id"
+  end
+
+  create_table "sessions", force: :cascade do |t|
+    t.string "session_id", null: false
+    t.text "data"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["session_id"], name: "index_sessions_on_session_id", unique: true
+    t.index ["updated_at"], name: "index_sessions_on_updated_at"
+  end
+
   create_table "shops", force: :cascade do |t|
     t.string "name"
     t.string "category"
