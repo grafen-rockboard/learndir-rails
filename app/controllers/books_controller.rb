@@ -1,6 +1,11 @@
 # coding: utf-8
 class BooksController < ApplicationController
+<<<<<<< HEAD
+
+  around_action :write_test, only: [:show]
+=======
   before_action :find_book, only: [:update, :destroy, :show, :edit]
+>>>>>>> 899a61f203091ff4aacf85fcef351765eb555db0
   
   def index
     @books = Book.all
@@ -14,14 +19,17 @@ class BooksController < ApplicationController
     ]
     
     puts '----------- trial --------------'
+
+
+    render plane: '<h1><%= "おはよう" %></h1>'
     
     
     # trial もしくは trial.htmlでアクセスすると root へリダイレクト
     # trial.json でアクセスすると @test をJSON形式で返す
-    respond_to do |format|
-      format.html { redirect_to root_path }
-      format.json { render json: @test }
-    end
+    # respond_to do |format|
+    #   format.html { redirect_to root_path }
+    #   format.json { render json: @test }
+    # end
   end
   
   def new
@@ -38,16 +46,34 @@ class BooksController < ApplicationController
   end
 
   def show
+<<<<<<< HEAD
+    @book = Book.find(params[:id])
+
+    respond_to do |format|
+      format.html { render :show }
+      format.xml { render xml: @book }
+      format.json { render json: @book }
+    end
+=======
+>>>>>>> 899a61f203091ff4aacf85fcef351765eb555db0
   end
   
   def edit
   end
   
   def update
+<<<<<<< HEAD
+    @book = Book.find(params[:id])
+    if @book.update(book_params)
+      redirect_to root_path
+    else
+      render :edit
+=======
     if @book.update!(book_params)
       redirect_to @book
     else
       :edit
+>>>>>>> 899a61f203091ff4aacf85fcef351765eb555db0
     end
   end
 
@@ -65,4 +91,15 @@ class BooksController < ApplicationController
   def book_params
     params.require(:book).permit(:name, :description, :price, :email)
   end
+
+  def write_test
+    p '---------- around before -----------'
+    p '------------------------------------'
+
+    yield
+
+    p '---------- around after ------------'
+    p '------------------------------------'
+  end
+  
 end

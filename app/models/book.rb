@@ -1,5 +1,13 @@
 # coding: utf-8
 class Book < ApplicationRecord
+<<<<<<< HEAD
+  has_many :rentals
+  has_many :users, through: :rentals
+  
+  validates :name, presence: {message: "図書名を入力してください。"}
+  validates :description, presence: true
+  validates :price, presence: true
+=======
 
   DESC_PATTERN  = ["東京", "大阪", "福岡"]
   
@@ -30,4 +38,5 @@ class Book < ApplicationRecord
   #     errors.add(:email, "Enter email address correctly.")
   #   end
   # end
+>>>>>>> 899a61f203091ff4aacf85fcef351765eb555db0
 end

@@ -10,7 +10,11 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
+ActiveRecord::Schema.define(version: 2021_07_05_135815) do
+=======
 ActiveRecord::Schema.define(version: 2021_06_30_025344) do
+>>>>>>> 899a61f203091ff4aacf85fcef351765eb555db0
 
   create_table "books", force: :cascade do |t|
     t.string "name"
@@ -21,6 +25,25 @@ ActiveRecord::Schema.define(version: 2021_06_30_025344) do
     t.integer "price"
   end
 
+  create_table "rentals", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "book_id", null: false
+    t.date "rental_date"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["book_id"], name: "index_rentals_on_book_id"
+    t.index ["user_id"], name: "index_rentals_on_user_id"
+  end
+
+  create_table "sessions", force: :cascade do |t|
+    t.string "session_id", null: false
+    t.text "data"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["session_id"], name: "index_sessions_on_session_id", unique: true
+    t.index ["updated_at"], name: "index_sessions_on_updated_at"
+  end
+
   create_table "shops", force: :cascade do |t|
     t.string "name"
     t.string "category"
@@ -28,4 +51,12 @@ ActiveRecord::Schema.define(version: 2021_06_30_025344) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "rentals", "books"
+  add_foreign_key "rentals", "users"
 end
